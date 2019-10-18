@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CompManager.cs" />
     <Compile Include="Computer.cs" />
     <Compile Include="Task.cs" />
     <Compile Include="Form1.cs">
