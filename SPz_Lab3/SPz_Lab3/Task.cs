@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace SPz_Lab3
 {
-    class Task
+    public class Task: IEquatable<Task>
     {
         //Task fields & properies
         private string TName { get; set; }
@@ -17,14 +17,14 @@ namespace SPz_Lab3
         private string TAdditionalInf { get; set; }
 
         //Default constructor
-        Task()
+        public Task()
         {
             TName = "Task";
             TCompleteStatus = false;
         }
 
         //Copy constructor
-        Task(Task OtherTask)
+        public Task(Task OtherTask)
         {
             TName = OtherTask.TName;
             TCompleteStatus = OtherTask.TCompleteStatus;
@@ -37,13 +37,11 @@ namespace SPz_Lab3
         {
             if (TCompleteStatus)
             {
-                /*
                 string message = "You can't execute task which is already executed.";
                 string caption = "Task already executed.";
                 MessageBoxButtons buttons = MessageBoxButtons.YesNo;
 
-                MessageBox.Show(message, caption, buttons);
-                */
+                MessageBox.Show(message, caption, buttons); 
             }
             else
             {
@@ -51,5 +49,25 @@ namespace SPz_Lab3
                 TDateTime = DateTime.Now;
             }
         }
+
+        //Override Equals for comparison in Comuter Class
+        public  bool Equals(Task t)
+        {
+            if (t == null || ! (t is Task))
+                return false;
+
+            return t.TName == this.TName && t.TCompleteStatus == this.TCompleteStatus;
+        }
+
+        public override bool Equals(object obj) => Equals(obj as Task);
+        public override int GetHashCode() => (TName).GetHashCode();
+        
+        /*
+        //Override GetHashCode for comparison in Comuter Class
+        public override int GetHashCode()
+        {
+            return this.ToString().GetHashCode();
+        }
+        */
     }
 }
