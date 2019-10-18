@@ -13,10 +13,14 @@ namespace SPz_Lab3
         private string CName { get; set; }
 
         private List<Task> CAssignedTasks { get; set; }
-
         private int CAmountOfAssgndTsks { get; set; }
-
         private bool CStatus { get; set; }
+
+        public Task AssignedTasks 
+        {
+            set { CAssignedTasks.Add(value); }
+        }
+
 
 
         //Override Equals for comparison in Comuter Class

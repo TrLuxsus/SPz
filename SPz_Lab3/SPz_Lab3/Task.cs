@@ -11,22 +11,28 @@ namespace SPz_Lab3
     public class Task: IEquatable<Task>
     {
         //Task fields & properies
-        private string TName { get; set; }
+        private string TName;
         private bool TCompleteStatus { get; set; }
         private DateTime TDateTime { get; set; }
         private string TAdditionalInf { get; set; }
 
+        public string Name
+        {
+            get { return TName; }
+            set { TName = value; }
+        }
+
         //Default constructor
         public Task()
         {
-            TName = "Task";
+            Name = "Task";
             TCompleteStatus = false;
         }
 
         //Copy constructor
         public Task(Task OtherTask)
         {
-            TName = OtherTask.TName;
+            Name = OtherTask.TName;
             TCompleteStatus = OtherTask.TCompleteStatus;
             TDateTime = OtherTask.TDateTime;
             TAdditionalInf = OtherTask.TAdditionalInf;
@@ -56,11 +62,11 @@ namespace SPz_Lab3
             if (t == null || ! (t is Task))
                 return false;
 
-            return t.TName == this.TName && t.TCompleteStatus == this.TCompleteStatus;
+            return t.Name == this.Name && t.TCompleteStatus == this.TCompleteStatus;
         }
 
         public override bool Equals(object obj) => Equals(obj as Task);
-        public override int GetHashCode() => (TName).GetHashCode();
+        public override int GetHashCode() => (Name).GetHashCode();
         
         /*
         //Override GetHashCode for comparison in Comuter Class
