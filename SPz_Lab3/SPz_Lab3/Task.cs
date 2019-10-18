@@ -9,9 +9,26 @@ namespace SPz_Lab3
 {
     class Task
     {
-        private string TaskName;
-        private bool TaskCompleteStatus;
-        private DateTime TaskDateTime;
-        private string TaskAdditionalInf;
+        //Task fields & properies
+        private string TName { get; set; }
+        private bool TCompleteStatus { get; set; }
+        private DateTime TDateTime { get; set; }
+        private string TAdditionalInf { get; set; }
+
+        //Default constructor
+        Task()
+        {
+            TName = "Task";
+            TCompleteStatus = false;
+        }
+
+        //Copy constructor
+        Task(Task OtherTask)
+        {
+            TName = OtherTask.TName;
+            TCompleteStatus = OtherTask.TCompleteStatus;
+            TDateTime = OtherTask.TDateTime;
+            TAdditionalInf = OtherTask.TAdditionalInf;
+        }
     }
 }
