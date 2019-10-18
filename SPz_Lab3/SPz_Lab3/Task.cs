@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 
 namespace SPz_Lab3
@@ -29,6 +30,26 @@ namespace SPz_Lab3
             TCompleteStatus = OtherTask.TCompleteStatus;
             TDateTime = OtherTask.TDateTime;
             TAdditionalInf = OtherTask.TAdditionalInf;
+        }
+
+        //Method Task Execution
+        public void ExecuteTask()
+        {
+            if (TCompleteStatus)
+            {
+                /*
+                string message = "You can't execute task which is already executed.";
+                string caption = "Task already executed.";
+                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+
+                MessageBox.Show(message, caption, buttons);
+                */
+            }
+            else
+            {
+                TCompleteStatus = true;
+                TDateTime = DateTime.Now;
+            }
         }
     }
 }
