@@ -12,47 +12,83 @@ namespace SPz_Lab3
     {
         //Task fields & properies
         private string TName;
-        private bool TCompleteStatus { get; set; }
-        private DateTime TDateTime { get; set; }
-        private string TAdditionalInf { get; set; }
+        private bool TCompleteStatus;
+        private DateTime TDateTime;
+        private string TAdditionalInf;
 
         public string Name
         {
             get { return TName; }
-            set { TName = value; }
+            set 
+            { 
+                if (value == null)
+                {
+                    MessageBox.Show("You must input task name.");
+                }
+                else
+                {
+                    TName = value;
+                } 
+            }
+        }
+
+        public bool Status
+        {
+            get { return TCompleteStatus; }
+            set { TCompleteStatus = value; }
+        }
+
+        public DateTime ExDateTime
+        {
+            get { return TDateTime; }
+            set { TDateTime = value; }
+        }
+
+        public string AdditionalInf
+        {
+            get { return TAdditionalInf; }
+            set { TAdditionalInf = value; }
         }
 
         //Default constructor
         public Task()
         {
             Name = "Task";
-            TCompleteStatus = false;
+            Status = false;
         }
 
         //Copy constructor
         public Task(Task OtherTask)
         {
-            Name = OtherTask.TName;
-            TCompleteStatus = OtherTask.TCompleteStatus;
-            TDateTime = OtherTask.TDateTime;
-            TAdditionalInf = OtherTask.TAdditionalInf;
+            Name = OtherTask.Name;
+            Status = OtherTask.Status;
+            ExDateTime = OtherTask.ExDateTime;
+            AdditionalInf = OtherTask.AdditionalInf;
+        }
+
+        //Special constructor
+        public Task(string InName, string InAdditionalInf)
+        {
+            Name = InName;
+            Status = false;
+
         }
 
         //Method Task Execution
         public void ExecuteTask()
         {
-            if (TCompleteStatus)
+            if (Status)
             {
-                string message = "You can't execute task which is already executed.";
-                string caption = "Task already executed.";
-                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-
-                MessageBox.Show(message, caption, buttons); 
+                MessageBox.Show("You can't execute task which is already executed."); 
             }
             else
             {
-                TCompleteStatus = true;
-                TDateTime = DateTime.Now;
+                try 
+                {
+                    Status = true;
+                    ExDateTime = DateTime.Now;
+                }
+                catch { }
             }
         }
 
@@ -62,7 +98,7 @@ namespace SPz_Lab3
             if (t == null || ! (t is Task))
                 return false;
 
-            return t.Name == this.Name && t.TCompleteStatus == this.TCompleteStatus;
+            return t.Name == this.Name && t.Status == this.Status;
         }
 
         public override bool Equals(object obj) => Equals(obj as Task);
