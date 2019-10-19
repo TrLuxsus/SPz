@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace SPz_Lab3
 {
-    public partial class Form1 : Form
+    public partial class AddRouterForm : Form
     {
-        public Form1()
+        public AddRouterForm()
         {
             InitializeComponent();
+        }
+
+        private void BCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace SPz_Lab3
 {
@@ -10,15 +11,39 @@ namespace SPz_Lab3
     {
         //Computer fields
 
-        private string CName { get; set; }
+        private string _Name;
 
-        public List<Task> CAssignedTasks { get; set; }
-        private int CAmountOfAssgndTsks { get; set; }
-        private bool CStatus { get; set; }
+        public List<Task> _AssignedTasks { get; set; }
+        private int _AmountOfAssgndTsks { get; set; }
+        private bool _Status { get; set; }
+
+
+        public string Name
+        {
+            get { return _Name; }
+            set
+            {
+                if (value == null || value == "")
+                {
+                    MessageBox.Show("You must input computer name.");
+                }
+                else
+                {
+                    _Name = value;
+                }
+            }
+        }
 
         public Task AssignedTasks 
         {
-            set { CAssignedTasks.Add(value); }
+            set { _AssignedTasks.Add(value); }
+        }
+
+        //Special constructor
+        public Computer(string InName)
+        {
+            Name = InName;
+            _Status = true;
         }
 
 
@@ -29,12 +54,12 @@ namespace SPz_Lab3
             if (c == null || !(c is Computer))
                 return false;
 
-            return (((Computer) c).CStatus == this.CStatus &&
-                ((Computer)c).CAmountOfAssgndTsks == this.CAmountOfAssgndTsks &&
-                ((Computer)c).CAssignedTasks.SequenceEqual(this.CAssignedTasks));
+            return (((Computer) c)._Status == this._Status &&
+                ((Computer)c)._AmountOfAssgndTsks == this._AmountOfAssgndTsks &&
+                ((Computer)c)._AssignedTasks.SequenceEqual(this._AssignedTasks));
         }
 
-        public override int GetHashCode() => (CName).GetHashCode();
+        public override int GetHashCode() => (Name).GetHashCode();
         public static bool operator ==(Computer c1, Computer c2)
         {
             return c1.Equals(c2);
@@ -47,9 +72,9 @@ namespace SPz_Lab3
 
         int IComparable<Computer>.CompareTo(Computer obj)
         {
-            if (this.CAmountOfAssgndTsks > obj.CAmountOfAssgndTsks)
+            if (this._AmountOfAssgndTsks > obj._AmountOfAssgndTsks)
                 return 1;
-            if (this.CAmountOfAssgndTsks < obj.CAmountOfAssgndTsks)
+            if (this._AmountOfAssgndTsks < obj._AmountOfAssgndTsks)
                 return -1;
             else
                 return 0;

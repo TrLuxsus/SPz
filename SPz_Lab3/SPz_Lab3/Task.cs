@@ -11,43 +11,48 @@ namespace SPz_Lab3
     public class Task: IEquatable<Task>
     {
         //Task fields & properies
-        private string TName;
-        private bool TCompleteStatus;
-        private DateTime TDateTime;
-        private string TAdditionalInf;
+        private string _Name;
+        private bool _CompleteStatus;
+        private DateTime _DateTime;
+        private string _AdditionalInf;
 
         public string Name
         {
-            get { return TName; }
+            get { return _Name; }
             set 
             { 
-                if (value == null)
+                if (value == null || value == "")
                 {
                     MessageBox.Show("You must input task name.");
                 }
                 else
                 {
-                    TName = value;
+                    _Name = value;
                 } 
             }
         }
 
         public bool Status
         {
-            get { return TCompleteStatus; }
-            set { TCompleteStatus = value; }
+            get { return _CompleteStatus; }
+            set { _CompleteStatus = value; }
         }
 
         public DateTime ExDateTime
         {
-            get { return TDateTime; }
-            set { TDateTime = value; }
+            get { return _DateTime; }
+            set { _DateTime = value; }
         }
 
         public string AdditionalInf
         {
-            get { return TAdditionalInf; }
-            set { TAdditionalInf = value; }
+            get { return _AdditionalInf; }
+            set { _AdditionalInf = value; }
+        }
+
+        public override string ToString()
+        {
+            return Name;
         }
 
         //Default constructor
@@ -67,11 +72,11 @@ namespace SPz_Lab3
         }
 
         //Special constructor
-        public Task(string InName, string InAdditionalInf)
+        public Task(string InName, string InAdditionalInf="")
         {
             Name = InName;
             Status = false;
-
+            AdditionalInf = InAdditionalInf;
         }
 
         //Method Task Execution

@@ -11,48 +11,57 @@ namespace SPz_Lab3
     {
 
         //CompManager fields & properies
-        private List<Computer> CMComputersList { get; set; }
-        private Dictionary<string, Task> CMTaskDictionary { get; set; }
-        private int CMComputersAmount { get; set; }
-        private int CMWorkplaceAmount { get; set; }
-        private bool CMWiFiStatus { get; set; }
-        private string CMWiFiPswd { get; set; }
+        public List<Computer> _ComputersList;
+        public Dictionary<string, Task> _TaskDictionary;
+        private int _ComputersAmount { get; set; }
+        private int _WorkplaceAmount { get; set; }
+        private bool _WiFiStatus { get; set; }
+        private string _WiFiPswd { get; set; }
 
+
+        //Default constructor
+        public CompManager()
+        {
+            _WiFiStatus = false;
+            _ComputersList = new List<Computer>();
+            _TaskDictionary = new Dictionary<string, Task>();
+            _ComputersAmount = _ComputersList.Count;
+            _WorkplaceAmount = _ComputersAmount;
+        }
 
         public void TaskToPC(int c, string k)
         {
-            CMComputersList[c].AssignedTasks = CMTaskDictionary[k];
+            _ComputersList[c].AssignedTasks = _TaskDictionary[k];
         }
 
         public void TaskFromPC(int c, Task t)
         {
-            CMComputersList[c].CAssignedTasks.Remove(t);
+            _ComputersList[c]._AssignedTasks.Remove(t);
         }
 
-        public void AddComputer()
+        public void AddComputer(Computer c)
         {
-            CMComputersList.Add(new Computer());
+            _ComputersList.Add(c);
         }
 
-        public void RemoveComputer(Computer c)
+        public void RemoveComputer(int i)
         {
-            CMComputersList.Remove(c);
+            _ComputersList.RemoveAt(i);
         }
 
-        public void AddTask()
+        public void AddTask(string s, Task t)
         {
-            Task tmp = new Task();
-            CMTaskDictionary.Add(tmp.Name, tmp);
+            _TaskDictionary.Add(s, t);
         }
 
         public void RemoveTask(string s)
         {
-            CMTaskDictionary.Remove(s);
+            _TaskDictionary.Remove(s);
         }
 
         public void InstallRouter(string pswd)
         {
-            if (CMWiFiStatus)
+            if (_WiFiStatus)
             {
                 string message = "You can't install WiFi router because it's already installed.";
                 string caption = "WiFi router already installed.";
@@ -62,14 +71,14 @@ namespace SPz_Lab3
             }
             else
             {
-                CMWiFiStatus = true;
-                CMWiFiPswd = pswd;
+                _WiFiStatus = true;
+                _WiFiPswd = pswd;
             }
         }
 
         public void RemoveRouter()
         {
-            if (!CMWiFiStatus)
+            if (!_WiFiStatus)
             {
                 string message = "You can't remove WiFi router because it isn't installed.";
                 string caption = "WiFi router isn't installed.";
@@ -79,7 +88,7 @@ namespace SPz_Lab3
             }
             else
             {
-                CMWiFiStatus = false;
+                _WiFiStatus = false;
             }
         }
     }
