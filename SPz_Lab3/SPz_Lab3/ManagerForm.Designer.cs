@@ -38,6 +38,8 @@
             this.RemoveTaskButton = new System.Windows.Forms.Button();
             this.BAddRouter = new System.Windows.Forms.Button();
             this.BRemoveRouter = new System.Windows.Forms.Button();
+            this.BTaskToComp = new System.Windows.Forms.Button();
+            this.TaskFromComp = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // CompLabel
@@ -57,6 +59,7 @@
             this.LBCompurets.Name = "LBCompurets";
             this.LBCompurets.Size = new System.Drawing.Size(273, 316);
             this.LBCompurets.TabIndex = 1;
+            this.LBCompurets.SelectedIndexChanged += new System.EventHandler(this.LBCompurets_SelectedIndexChanged);
             // 
             // LBTasks
             // 
@@ -141,11 +144,34 @@
             this.BRemoveRouter.Text = "Remove router";
             this.BRemoveRouter.UseVisualStyleBackColor = true;
             // 
+            // BTaskToComp
+            // 
+            this.BTaskToComp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BTaskToComp.Location = new System.Drawing.Point(334, 89);
+            this.BTaskToComp.Name = "BTaskToComp";
+            this.BTaskToComp.Size = new System.Drawing.Size(139, 34);
+            this.BTaskToComp.TabIndex = 10;
+            this.BTaskToComp.Text = "Task to Computer";
+            this.BTaskToComp.UseVisualStyleBackColor = true;
+            this.BTaskToComp.Click += new System.EventHandler(this.BTaskToComp_Click);
+            // 
+            // TaskFromComp
+            // 
+            this.TaskFromComp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TaskFromComp.Location = new System.Drawing.Point(334, 138);
+            this.TaskFromComp.Name = "TaskFromComp";
+            this.TaskFromComp.Size = new System.Drawing.Size(139, 34);
+            this.TaskFromComp.TabIndex = 11;
+            this.TaskFromComp.Text = "TaskFromComputer";
+            this.TaskFromComp.UseVisualStyleBackColor = true;
+            // 
             // ManagerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.TaskFromComp);
+            this.Controls.Add(this.BTaskToComp);
             this.Controls.Add(this.BRemoveRouter);
             this.Controls.Add(this.BAddRouter);
             this.Controls.Add(this.RemoveTaskButton);
@@ -168,8 +194,6 @@
         #endregion
 
         private System.Windows.Forms.Label CompLabel;
-        private System.Windows.Forms.ListBox LBCompurets;
-        private System.Windows.Forms.ListBox LBTasks;
         private System.Windows.Forms.Label TasksLabel;
         private System.Windows.Forms.Button AddCompButtton;
         private System.Windows.Forms.Button RemoveCompButton;
@@ -177,6 +201,10 @@
         private System.Windows.Forms.Button RemoveTaskButton;
         private System.Windows.Forms.Button BAddRouter;
         private System.Windows.Forms.Button BRemoveRouter;
+        private System.Windows.Forms.Button BTaskToComp;
+        private System.Windows.Forms.Button TaskFromComp;
+        public System.Windows.Forms.ListBox LBTasks;
+        private System.Windows.Forms.ListBox LBCompurets;
     }
 }
 

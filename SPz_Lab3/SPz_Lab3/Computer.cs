@@ -13,8 +13,8 @@ namespace SPz_Lab3
 
         private string _Name;
 
-        public List<Task> _AssignedTasks { get; set; }
-        private int _AmountOfAssgndTsks { get; set; }
+        public List<Task> _AssignedTasks;
+        private int _AmountOfAssgndTsks;
         private bool _Status { get; set; }
 
 
@@ -39,11 +39,19 @@ namespace SPz_Lab3
             set { _AssignedTasks.Add(value); }
         }
 
+        public int AmountOfAssgndTsks
+        {
+            get { return _AmountOfAssgndTsks; }
+            set { _AmountOfAssgndTsks = value; }
+        }
+
         //Special constructor
         public Computer(string InName)
         {
             Name = InName;
             _Status = true;
+            _AssignedTasks = new List<Task>();
+            AmountOfAssgndTsks = _AssignedTasks.Count;
         }
 
 

@@ -99,7 +99,7 @@ namespace SPz_Lab3
         {
             try
             {
-                //Manager.RemoveTask(LBTasks.SelectedIndex.ToString);
+                Manager.RemoveTask(LBTasks.Text);
                 LBTasks.Items.RemoveAt(LBTasks.SelectedIndex);
             }
             catch (ArgumentOutOfRangeException)
@@ -117,6 +117,18 @@ namespace SPz_Lab3
             }
         }
 
+        private void LBCompurets_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (LBCompurets.SelectedIndex != -1)
+            {
+                LBTasks.Refresh();
+            }
+        }
+
+        private void BTaskToComp_Click(object sender, EventArgs e)
+        {
+            Manager.TaskToPC(LBCompurets.SelectedIndex, LBTasks.Text);
+        }
     }
 
 }

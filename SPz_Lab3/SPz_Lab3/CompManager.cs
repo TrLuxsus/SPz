@@ -31,12 +31,14 @@ namespace SPz_Lab3
 
         public void TaskToPC(int c, string k)
         {
-            _ComputersList[c].AssignedTasks = _TaskDictionary[k];
+            _ComputersList[c]._AssignedTasks.Add( _TaskDictionary[k]);
+            _ComputersList[c].AmountOfAssgndTsks++;
         }
 
         public void TaskFromPC(int c, Task t)
         {
             _ComputersList[c]._AssignedTasks.Remove(t);
+            _ComputersList[c].AmountOfAssgndTsks--;
         }
 
         public void AddComputer(Computer c)
